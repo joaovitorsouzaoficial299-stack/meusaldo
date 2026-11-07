@@ -1,5 +1,0 @@
--- Doces da Gi: configuração de banco e políticas de acesso
--- Já aplicado ao projeto Supabase dcnzcdkptpuwbmogrhes.
--- Para liberar a administradora depois de criar a conta em Supabase Auth:
--- insert into public.admins (user_id) values ('UUID-DO-USUARIO-AQUI');
--- Não use user_metadata para definir privilégios de administrador.
