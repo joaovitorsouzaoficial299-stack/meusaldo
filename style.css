@@ -97,3 +97,41 @@ fieldset.transaction-categories{margin:0;min-inline-size:0}
 /* Dashboard: saudação como título e seletor sol/lua */
 .dashboard-heading h1 .dashboard-greeting{font:inherit;letter-spacing:inherit;line-height:inherit;color:#f2e7da;background:none;border:0;padding:0;text-align:left;white-space:normal;cursor:pointer}.dashboard-heading h1 .dashboard-greeting:hover{color:#e8cba2;text-decoration:none}.dashboard-theme-switch{display:flex;align-items:center;width:74px;height:40px;border:1px solid #6c686d;border-radius:99px;padding:4px;background:#4d4b52;cursor:pointer;flex:none;transition:background .25s}.dashboard-theme-knob{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:#fff;color:#373239;transition:transform .25s;box-shadow:0 2px 6px #0003}.dashboard-theme-knob svg{width:19px;height:19px}.dashboard-theme-switch[aria-checked="true"]{background:#d2b286;border-color:#b18f61}.dashboard-theme-switch[aria-checked="true"] .dashboard-theme-knob{transform:translateX(34px)}.dashboard-theme-switch:focus-visible{outline:2px solid #e3bf8e;outline-offset:3px}
 body.dashboard-light{background:#f7f5f0!important;color:#282522!important}body.dashboard-light .shell,body.dashboard-light .main{background:transparent!important}body.dashboard-light .topbar{border-color:#d9d3ca}body.dashboard-light .dashboard-heading h1 .dashboard-greeting{color:#282522}body.dashboard-light .dashboard-heading h1 .dashboard-greeting:hover{color:#9a7447}body.dashboard-light .eyebrow,body.dashboard-light .panel-kicker{color:#946e43}body.dashboard-light .intro,body.dashboard-light .date{color:#746d66}body.dashboard-light .panel,body.dashboard-light .lessons article,body.dashboard-light .item,body.dashboard-light .empty,body.dashboard-light .view:not(#inicio) .tip{background:#fff!important;color:#292623!important;border-color:#ddd5cb!important;box-shadow:0 9px 30px #3c29150a}body.dashboard-light .panel strong,body.dashboard-light .panel b,body.dashboard-light .panel h2,body.dashboard-light .panel h3{color:#292623}body.dashboard-light .panel small,body.dashboard-light .panel span:not(.panel-kicker),body.dashboard-light .item-info small{color:#756d66}body.dashboard-light .panel-pill,body.dashboard-light .bottom-nav{background:#ebe5dd!important;border-color:#d7cdc0!important;color:#423b35}body.dashboard-light .bottom-nav button{color:#514a43}body.dashboard-light .bottom-nav button.active{background:#d6b98e;color:#211b15}body.dashboard-light .chart-grid,body.dashboard-light .chart-months{color:#756d66}body.dashboard-light input,body.dashboard-light select,body.dashboard-light textarea{background:#fff;color:#24211d;border-color:#d4c9bb}body.dashboard-light .view:not(#inicio) h1,body.dashboard-light .view:not(#inicio) h2,body.dashboard-light .view:not(#inicio) h3{color:#292623}body.dashboard-light .transaction-page,body.dashboard-light .transaction-view,body.dashboard-light .transaction-form{color:#292623}body.dashboard-light .transaction-field label{color:#4c453e}body.dashboard-light .greeting{color:#292623}
+
+/* Correção de contraste do modo claro: formulário de movimentação */
+body.dashboard-light .transaction-header h1,
+body.dashboard-light .transaction-history h2,
+body.dashboard-light .transaction-history-head h2{color:#26221e!important}
+body.dashboard-light .transaction-header .transaction-back{background:#eee5da;color:#6e4d2e;border-color:#d5c4ae}
+body.dashboard-light .transaction-hero{background:linear-gradient(140deg,#fffaf2,#f3e9dc)!important;border-color:#d9c3a6!important;box-shadow:0 8px 24px #70502b13!important}
+body.dashboard-light .transaction-amount-label{color:#6c5845!important}
+body.dashboard-light .transaction-amount-input{color:#28221d!important;caret-color:#946d42}
+body.dashboard-light .transaction-amount-input::placeholder{color:#8b8177!important}
+body.dashboard-light .kind-choice:not(.is-active){color:#6b6259!important}
+body.dashboard-light .kind-choice.is-active{color:#231a12!important}
+body.dashboard-light .transaction-field{background:#fff!important;border-color:#ddd4ca!important;box-shadow:0 6px 20px #42311c0b}
+body.dashboard-light .transaction-field label,
+body.dashboard-light .transaction-field legend{color:#574c43!important}
+body.dashboard-light .transaction-field label span{color:#766d64!important}
+body.dashboard-light .transaction-field input,
+body.dashboard-light .transaction-field textarea{color:#26221e!important;background:transparent!important}
+body.dashboard-light .transaction-field input::placeholder,
+body.dashboard-light .transaction-field textarea::placeholder{color:#807970!important;opacity:1}
+body.dashboard-light .transaction-field input[type="date"]{color-scheme:light}
+body.dashboard-light .category-chips button:not(.is-active){background:#f5f1eb!important;color:#554b41!important;border-color:#ddd3c7!important}
+body.dashboard-light .category-chips button.is-active{color:#261b12!important}
+body.dashboard-light .transaction-cancel{background:#eee7de;color:#55473b;border-color:#d9cfc3}
+body.dashboard-light .transaction-history{border-color:#ded4c9}
+body.dashboard-light .transaction-history .item{background:#fff!important;border-color:#ddd4ca!important}
+body.dashboard-light .transaction-history .item-info b{color:#29231e}
+body.dashboard-light .transaction-history-head span{color:#766e65}
+body.dashboard-light .bills-overview{background:#fff!important;border-color:#ddd4ca!important}
+body.dashboard-light .bills-overview strong{color:#29231e!important}
+body.dashboard-light .bills-overview span,
+body.dashboard-light .bills-overview small{color:#73695e!important}
+body.dashboard-light .bill-dialog{background:#fff;color:#29231e;border-color:#ddd4ca}
+body.dashboard-light .bill-dialog .dialog-top h2{color:#29231e}
+body.dashboard-light .bill-field label{color:#574c43}
+body.dashboard-light .bill-field input{background:#f9f6f2;color:#29231e;border-color:#ddd4ca;color-scheme:light}
+body.dashboard-light .bill-money-input{background:#f9f6f2;border-color:#ddd4ca}
+body.dashboard-light .bill-money-input input{background:transparent}
