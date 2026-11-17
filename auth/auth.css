@@ -13,3 +13,5 @@ body.signup-page{background:#0a0b0e}
 .signup-card .primary-button{background:linear-gradient(115deg,#f1ddbb,#c9a271);color:#241a10}
 .signup-card .primary-button:hover{background:linear-gradient(115deg,#f8e7c9,#dbb788)}
 @media(max-width:780px){.signup-form-area{background:radial-gradient(ellipse 85% 25% at 50% -10%,#8b694555,transparent),#0d0e11}}
+
+.logo .brand-logo{display:block;width:166px;max-width:100%;height:auto}

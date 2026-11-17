@@ -87,3 +87,9 @@ fieldset.transaction-categories{margin:0;min-inline-size:0}
 @keyframes feedback-in{from{opacity:0;transform:translate(-50%,18px) scale(.94)}to{opacity:1;transform:translate(-50%,0) scale(1)}}@keyframes check-pop{from{transform:scale(.25) rotate(-35deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
 @media(max-width:520px){.bills-overview{padding:20px 17px;gap:12px}.bills-add{font-size:12px;padding:12px 13px}.bill-dialog #entry-form{padding:24px 21px}.transaction-header{gap:4px}.transaction-header h1{font-size:20px}}
 @media(prefers-reduced-motion:reduce){.save-feedback,.save-feedback-icon{animation:none!important;transform:none}.save-feedback{transform:translateX(-50%)}}
+
+/* Identidade MeuSaldo */
+.topbar .identity{margin-right:auto}
+.topbar .brand.mobile-brand{display:block;line-height:0}
+.topbar .brand.mobile-brand img{display:block;width:158px;height:auto;max-height:42px}
+@media(max-width:850px){.topbar .brand.mobile-brand img{width:145px;max-height:40px}}
