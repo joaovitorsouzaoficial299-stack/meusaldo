@@ -135,3 +135,14 @@ body.dashboard-light .bill-field label{color:#574c43}
 body.dashboard-light .bill-field input{background:#f9f6f2;color:#29231e;border-color:#ddd4ca;color-scheme:light}
 body.dashboard-light .bill-money-input{background:#f9f6f2;border-color:#ddd4ca}
 body.dashboard-light .bill-money-input input{background:transparent}
+
+/* Modo claro: remover as camadas escuras fixas que encobriam as telas */
+html:has(body.dashboard-light){background:#f7f5f0!important;color-scheme:light}
+body.dashboard-light{background:#f7f5f0!important;color-scheme:light}
+body.dashboard-light::before{background:radial-gradient(ellipse 45% 38% at 15% 20%,rgba(218,191,151,.17),transparent 85%),radial-gradient(ellipse 42% 38% at 88% 70%,rgba(207,207,200,.18),transparent 85%),#f7f5f0!important;filter:none!important}
+body.dashboard-light::after{background:transparent!important}
+body.dashboard-light .transaction-view,body.dashboard-light .transaction-page{background:transparent!important;color:#292623!important}
+body.dashboard-light .transaction-view::before,body.dashboard-light .transaction-view::after{opacity:0!important}
+body.dashboard-light .transaction-header h1{color:#292623!important;text-shadow:none!important}
+body.dashboard-light .transaction-field input,body.dashboard-light .transaction-field textarea{color:#292623!important;-webkit-text-fill-color:#292623}
+body.dashboard-light .transaction-amount-input{-webkit-text-fill-color:#292623}
