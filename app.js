@@ -13,6 +13,17 @@ async function loadFinancialNews(force=false){
   articles.forEach(article=>{
    let url;try{url=new URL(article.link);if(!["https:","http:"].includes(url.protocol))return}catch{return}
    const card=document.createElement("a");card.className="news-card";card.href=url.href;card.target="_blank";card.rel="noopener noreferrer";
+   if(article.image){
+    try{
+     const imageUrl=new URL(article.image);
+     if(imageUrl.protocol==="https:"){
+      const media=document.createElement("div");media.className="news-card-media";
+      const img=document.createElement("img");img.src=imageUrl.href;img.alt="Imagem da notícia";img.loading="lazy";img.decoding="async";img.referrerPolicy="no-referrer";
+      img.addEventListener("error",()=>media.remove(),{once:true});
+      media.append(img);card.append(media);
+     }
+    }catch{}
+   }
    const top=document.createElement("div");top.className="news-card-top";
    const source=document.createElement("span");source.className="news-source";source.textContent=String(article.source||url.hostname).slice(0,55);
    const published=document.createElement("time");published.className="news-date";const when=new Date(article.date);if(Number.isFinite(when.getTime())){published.dateTime=when.toISOString();published.textContent=new Intl.DateTimeFormat("pt-BR",{day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"}).format(when)}else published.textContent="Notícia recente";
