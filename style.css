@@ -146,3 +146,33 @@ body.dashboard-light .transaction-view::before,body.dashboard-light .transaction
 body.dashboard-light .transaction-header h1{color:#292623!important;text-shadow:none!important}
 body.dashboard-light .transaction-field input,body.dashboard-light .transaction-field textarea{color:#292623!important;-webkit-text-fill-color:#292623}
 body.dashboard-light .transaction-amount-input{-webkit-text-fill-color:#292623}
+
+/* Evolução financeira — gráfico premium inspirado na referência, nas cores MeuSaldo */
+.performance{overflow:hidden}
+.performance .panel-head{align-items:center}
+.performance .performance-value{align-items:center;margin:19px 0 15px;flex-wrap:wrap}
+.performance .performance-value strong{font-size:clamp(28px,4vw,39px);letter-spacing:-1.5px}
+.performance .performance-value span{font-size:12px;font-weight:650;color:#b7d8bd}
+.performance .chart-area{height:220px;gap:11px;margin-top:12px}
+.performance .chart-grid{width:64px;flex:0 0 64px;font-size:10px;text-align:right;padding:25px 0 17px;color:#a6a09c}
+.performance .chart-area svg{width:calc(100% - 75px);height:100%;overflow:visible;color:#b6a795}
+.performance .chart-months{padding-left:75px;font-size:11px;margin-top:2px}
+.chart-periods{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-top:18px;padding:5px;border-radius:16px;background:rgba(15,14,18,.28);border:1px solid rgba(255,255,255,.06)}
+.chart-periods button{flex:1;min-width:0;min-height:37px;padding:8px 3px;border:0;border-radius:12px;background:transparent;color:#aaa4a3;font:700 12px Manrope,Arial,sans-serif;cursor:pointer;transition:background .2s,color .2s}
+.chart-periods button.active{color:#f6d7a4;background:rgba(202,163,109,.18);box-shadow:inset 0 0 0 1px rgba(221,181,120,.17)}
+.chart-periods button:focus-visible{outline:2px solid #d7b178;outline-offset:2px}
+body.dashboard-light .performance .chart-grid{color:#736d65}
+body.dashboard-light .performance .chart-area svg{color:#88796a}
+body.dashboard-light .performance .performance-value span{color:#397855}
+body.dashboard-light .chart-periods{background:#f1ece5;border-color:#e2d7c8}
+body.dashboard-light .chart-periods button{color:#71695f}
+body.dashboard-light .chart-periods button.active{background:#e0c7a5;color:#33271b;box-shadow:inset 0 0 0 1px #d4b487}
+@media(max-width:600px){
+ .performance .chart-area{height:192px;gap:5px}
+ .performance .chart-grid{width:53px;flex-basis:53px;font-size:9px}
+ .performance .chart-area svg{width:calc(100% - 58px)}
+ .performance .chart-months{padding-left:58px;font-size:10px}
+ .chart-periods{gap:2px;margin-top:14px}
+ .chart-periods button{font-size:11px;min-height:36px}
+ .performance .performance-value strong{font-size:30px}
+}
