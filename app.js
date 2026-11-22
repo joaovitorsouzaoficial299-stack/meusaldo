@@ -63,7 +63,42 @@ $("transaction-expense").addEventListener("click",()=>setTransactionKind("expens
 $("transaction-category-chips").addEventListener("click",e=>{const chip=e.target.closest("[data-category]");if(chip)setTransactionCategory(chip.dataset.category)});
 $("transaction-back").addEventListener("click",()=>tab("inicio"));
 $("transaction-cancel-edit").addEventListener("click",resetTransactionForm);
-transactionForm.addEventListener("submit",e=>{e.preventDefault();const value=Math.round(readAmount()*100)/100;const name=$("transaction-title").value.trim(),dateValue=$("transaction-date").value;if(!Number.isFinite(value)||value<=0){amountInput.focus();amountInput.setCustomValidity("Informe um valor maior que zero.");amountInput.reportValidity();return}amountInput.setCustomValidity("");if(!name||!dateValue)return;const entry={name,value,date:dateValue,kind:transactionKind,category:transactionCategory,note:$("transaction-note").value.trim()};if(transactionEditingId){const old=data.transactions.find(t=>t.id===transactionEditingId);if(old)Object.assign(old,entry)}else data.transactions.push({id:String(Date.now())+Math.random().toString(36).slice(2),...entry});const wasEditing=Boolean(transactionEditingId);save();render();resetTransactionForm();document.activeElement?.blur?.();showSaveFeedback(wasEditing?"Movimentação atualizada":"Movimentação salva",money(value)+" · "+(entry.kind==="income"?"Entrada":"Saída"));});
+transactionForm.addEventListener("submit",e=>{
+ e.preventDefault();e.stopPropagation();
+ const button=$("transaction-save");
+ if(button.disabled)return;
+ const value=Math.round(readAmount()*100)/100;
+ const name=$("transaction-title").value.trim(),dateValue=$("transaction-date").value;
+ if(!Number.isFinite(value)||value<=0){amountInput.setCustomValidity("Informe um valor maior que zero.");amountInput.reportValidity();amountInput.focus();return}
+ amountInput.setCustomValidity("");
+ if(!name){$("transaction-title").focus();return}
+ if(!dateValue){$("transaction-date").focus();return}
+ const entry={name,value,date:dateValue,kind:transactionKind,category:transactionCategory,note:$("transaction-note").value.trim()};
+ const wasEditing=Boolean(transactionEditingId);
+ const previous=data.transactions.map(t=>({...t}));
+ button.disabled=true;button.textContent="Salvando...";
+ try{
+  if(wasEditing){
+   const old=data.transactions.find(t=>t.id===transactionEditingId);
+   if(!old)throw new Error("Movimentação não encontrada para edição.");
+   Object.assign(old,entry);
+  }else data.transactions.push({id:String(Date.now())+Math.random().toString(36).slice(2),...entry});
+  save();
+  const stored=JSON.parse(localStorage.getItem(KEY)||"{}");
+  if(!Array.isArray(stored.transactions)||stored.transactions.length!==data.transactions.length)throw new Error("Não foi possível confirmar o salvamento.");
+  try{render()}catch(renderError){console.error("Erro ao atualizar painel:",renderError)}
+  resetTransactionForm();
+  document.activeElement?.blur?.();
+  showSaveFeedback(wasEditing?"Movimentação atualizada":"Movimentação salva",money(value)+" · "+(entry.kind==="income"?"Entrada":"Saída"));
+ }catch(error){
+  data.transactions=previous;
+  console.error("Falha ao salvar movimentação:",error);
+  alert("Não foi possível salvar a movimentação. Seus dados foram mantidos no formulário. Tente novamente.");
+ }finally{
+  button.disabled=false;
+  button.textContent=transactionEditingId?"Salvar alterações":"Salvar movimentação";
+ }
+});
 amountInput.addEventListener("input",()=>amountInput.setCustomValidity(""));
 resetTransactionForm();
 
