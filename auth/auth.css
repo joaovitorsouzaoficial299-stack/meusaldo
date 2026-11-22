@@ -208,3 +208,27 @@ body.login-reference,body.login-reference.login-dark{
   background-attachment:scroll!important;
  }
 }
+
+/* iPhone: pôster central em escala menor, preenchimento lateral pela mesma foto. */
+body.login-reference,body.login-reference.login-dark{
+ background:#161310!important;
+ position:relative!important;
+ isolation:isolate;
+}
+body.login-reference::before{
+ content:""!important;display:block!important;
+ position:fixed!important;inset:-24px!important;
+ z-index:-2!important;pointer-events:none!important;
+ background:linear-gradient(rgba(8,7,7,.3),rgba(8,7,7,.42)),url('/login/login-background.webp') center top/cover no-repeat!important;
+ filter:blur(18px)!important;
+}
+body.login-reference::after{
+ content:"";position:absolute;inset:0 0 auto 0;
+ height:100%;min-height:100svh;
+ z-index:-1;pointer-events:none;
+ background:linear-gradient(to bottom,transparent 65%,rgba(15,12,11,.85) 100%),url('/login/login-background.webp') center top/82% auto no-repeat;
+}
+body.login-reference.login-dark::before{filter:blur(18px) brightness(.58)!important}
+body.login-reference.login-dark::after{filter:brightness(.78)}
+body.login-reference .login-wrap,body.login-reference .login-brand,body.login-reference .login-theme-toggle{z-index:2}
+@media(min-width:781px){body.login-reference::after{background-size:100% 100%,auto 100%}}
