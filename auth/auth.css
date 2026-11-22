@@ -164,3 +164,30 @@ body.login-reference .login-theme-toggle{right:16px;top:calc(env(safe-area-inset
  body.login-reference .login-register{padding:0 17px 15px}
 }
 @media(max-height:690px){body.login-reference .login-wrap{padding-top:94px}body.login-reference .login-form{padding-top:15px;padding-bottom:12px;gap:8px}}
+
+/* Ajuste do enquadramento: proporção real do pôster, sem corte por cover */
+html:has(body.login-reference){overflow-x:hidden}
+body.login-reference,body.login-reference.login-dark{
+ background-color:#100e0c!important;
+ background-size:100% auto!important;
+ background-position:center top!important;
+ background-repeat:no-repeat!important;
+}
+body.login-reference .login-wrap{
+ justify-content:flex-end!important;
+}
+body.login-reference .login-form{
+ backdrop-filter:none!important;
+ -webkit-backdrop-filter:none!important;
+ background:linear-gradient(135deg,rgba(52,49,48,.88),rgba(28,29,31,.94))!important;
+}
+@media(max-width:780px){
+ body.login-reference,body.login-reference.login-dark{
+  background-size:100% auto!important;
+  background-attachment:scroll!important;
+ }
+ body.login-reference .login-wrap{
+  min-height:100svh!important;
+  padding-top:max(100px,env(safe-area-inset-top))!important;
+ }
+}
