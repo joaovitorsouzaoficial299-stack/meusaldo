@@ -213,3 +213,12 @@ body.dashboard-light .chart-periods button.active{background:#e0c7a5;color:#3327
   }
  }
 }
+
+/* Dashboard simplificado: manter elementos de cálculo no DOM, mas ocultar cartões não solicitados. */
+#inicio .performance-value #growth,
+#inicio .panel.wealth,
+#inicio .panel.allocation,
+#inicio .panel.goals{
+ display:none!important;
+}
+#inicio .performance-value{justify-content:flex-start!important}
