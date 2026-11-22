@@ -176,3 +176,15 @@ body.dashboard-light .chart-periods button.active{background:#e0c7a5;color:#3327
  .chart-periods button{font-size:11px;min-height:36px}
  .performance .performance-value strong{font-size:30px}
 }
+
+/* iOS Safari: prevents automatic focus zoom without disabling pinch-to-zoom. */
+@media(max-width:850px){
+ input,select,textarea,
+ .transaction-form input,.transaction-form textarea,
+ .transaction-amount-input,.transaction-field input,
+ .transaction-field textarea,
+ #transaction-title,#transaction-date,#transaction-note,#transaction-amount,
+ #entry-form input,#entry-form select{
+  font-size:16px!important;
+ }
+}
