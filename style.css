@@ -278,3 +278,32 @@ body.dashboard-light #aprender .news-card:hover{background:#f0e8dc}
  #aprender .news-card-content{gap:12px}
  #aprender .news-more{font-size:11px}
 }
+
+/* Portal editorial MeuSaldo: estrutura do feed do Google Notícias, identidade própria. */
+#aprender .news-portal-header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 0 19px}
+#aprender .news-portal-brand{display:flex;align-items:center;gap:10px;font-size:clamp(22px,4vw,31px);font-weight:600;letter-spacing:-.055em}
+#aprender .news-portal-brand strong{font-weight:800;color:#d8ad6b}
+#aprender .news-brand-dot{display:inline-block;width:11px;height:11px;background:#cfab73;border-radius:4px;box-shadow:0 0 0 4px rgba(211,170,111,.13)}
+#aprender .news-topics{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:2px 0 15px;border-bottom:1px solid rgba(176,160,135,.24);-webkit-overflow-scrolling:touch}
+#aprender .news-topics::-webkit-scrollbar{display:none}
+#aprender .news-topic{flex:0 0 auto;border:0;border-radius:13px;padding:11px 16px;background:transparent;color:inherit;opacity:.7;font-size:13px;font-weight:700;cursor:pointer}
+#aprender .news-topic.active{background:#cba976;color:#241b11;opacity:1}
+#aprender .news-section-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:24px 0 9px}
+#aprender .news-section-title h2{margin:0;font-size:clamp(20px,4vw,28px);font-weight:750;letter-spacing:-.04em}
+#aprender .news-section-title span{font-size:11px;opacity:.65}
+#aprender .news-featured{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px}
+#aprender .news-featured>.news-section-title{grid-column:1/-1}
+#aprender .news-featured-card{border-bottom:1px solid rgba(184,168,145,.24)}
+#aprender .news-featured .news-card{padding:18px 0}
+#aprender .news-featured .news-card h2{font-size:clamp(17px,2.2vw,22px)}
+#aprender .news-featured .news-card-media{flex-basis:100px;width:100px;height:100px}
+body.dashboard-light #aprender .news-topic.active{background:#d8b988;color:#322315}
+body.dashboard-light #aprender .news-portal-brand strong{color:#97713f}
+@media(max-width:650px){
+ #aprender .news-featured{display:block}
+ #aprender .news-portal-header{padding-bottom:12px}
+ #aprender .news-portal-brand{font-size:23px}
+ #aprender .news-topic{padding:10px 13px;font-size:12px}
+ #aprender .news-section-title{margin-top:18px}
+ #aprender .news-featured .news-card h2{font-size:17px}
+}
