@@ -191,3 +191,21 @@ body.login-reference .login-form{
   padding-top:max(100px,env(safe-area-inset-top))!important;
  }
 }
+
+/* Correção definitiva do pôster no iPhone: reduzir a foto sem recortá-la.
+   A primeira camada é o degradê; a segunda é a foto. */
+body.login-reference,body.login-reference.login-dark{
+ background-size:100% 100%, 82% auto!important;
+ background-position:center top,center top!important;
+ background-repeat:no-repeat,no-repeat!important;
+}
+@media(min-width:781px){
+ body.login-reference,body.login-reference.login-dark{background-size:100% 100%, auto 100%!important}
+}
+@media(max-width:780px){
+ body.login-reference,body.login-reference.login-dark{
+  background-size:100% 100%,82% auto!important;
+  background-position:center top,center 8px!important;
+  background-color:#100e0c!important;
+ }
+}
