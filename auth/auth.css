@@ -209,26 +209,40 @@ body.login-reference,body.login-reference.login-dark{
  }
 }
 
-/* iPhone: pôster central em escala menor, preenchimento lateral pela mesma foto. */
+
+/* Login compacto no estilo da referência: UMA foto nítida, sem camadas desfocadas. */
 body.login-reference,body.login-reference.login-dark{
- background:#161310!important;
- position:relative!important;
- isolation:isolate;
+ background-image:linear-gradient(to bottom,rgba(0,0,0,.06),rgba(0,0,0,.03) 56%,rgba(0,0,0,.18)),url('/login/login-background.webp')!important;
+ background-size:100% 100%,100% 100%!important;
+ background-position:center center!important;
+ background-repeat:no-repeat!important;
+ background-attachment:scroll!important;
+ background-color:#211b17!important;
+ isolation:auto!important;
 }
-body.login-reference::before{
- content:""!important;display:block!important;
- position:fixed!important;inset:-24px!important;
- z-index:-2!important;pointer-events:none!important;
- background:linear-gradient(rgba(8,7,7,.3),rgba(8,7,7,.42)),url('/login/login-background.webp') center top/cover no-repeat!important;
- filter:blur(18px)!important;
+body.login-reference::before,body.login-reference::after{display:none!important;content:none!important;filter:none!important}
+body.login-reference .login-wrap{
+ width:min(420px,calc(100% - 36px))!important;
+ min-height:100svh!important;
+ padding:115px 0 max(22px,env(safe-area-inset-bottom))!important;
+ justify-content:flex-end!important;
 }
-body.login-reference::after{
- content:"";position:absolute;inset:0 0 auto 0;
- height:100%;min-height:100svh;
- z-index:-1;pointer-events:none;
- background:linear-gradient(to bottom,transparent 65%,rgba(15,12,11,.85) 100%),url('/login/login-background.webp') center top/82% auto no-repeat;
+body.login-reference .login-form{
+ gap:9px!important;padding:16px 16px 12px!important;
+ border-radius:28px!important;
+ background:linear-gradient(135deg,rgba(65,64,64,.84),rgba(35,35,37,.87))!important;
+ backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
 }
-body.login-reference.login-dark::before{filter:blur(18px) brightness(.58)!important}
-body.login-reference.login-dark::after{filter:brightness(.78)}
-body.login-reference .login-wrap,body.login-reference .login-brand,body.login-reference .login-theme-toggle{z-index:2}
-@media(min-width:781px){body.login-reference::after{background-size:100% 100%,auto 100%}}
+body.login-reference .login-input{height:46px!important;border-radius:14px!important}
+body.login-reference .login-input input{font-size:16px!important}
+body.login-reference .login-input>svg{width:21px!important;height:21px!important}
+body.login-reference .login-submit{height:49px!important;font-size:17px!important;border-radius:14px!important;margin:3px 0 0!important}
+body.login-reference .login-arrow{height:34px!important;width:34px!important;font-size:23px!important}
+body.login-reference .login-options{margin-top:0!important;font-size:11px!important}
+body.login-reference .login-options .remember,body.login-reference .login-options a{font-size:11px!important}
+body.login-reference .login-register{padding:0 16px 12px!important;margin:0!important;font-size:11px!important}
+body.login-reference .login-register a{padding:12px!important;font-size:14px!important;margin-top:5px!important}
+@media(max-width:780px){
+ body.login-reference .login-wrap{width:min(420px,calc(100% - 36px))!important}
+ body.login-reference .login-brand{width:clamp(115px,31vw,160px)!important}
+}
