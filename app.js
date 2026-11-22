@@ -18,9 +18,16 @@ function renderChart(){
  visible.forEach(t=>{balance+=amount(t);points.push({time:t.time,value:balance,name:t.name,change:amount(t),date:t.date})});
  points.push({time:Math.max(endTime,startTime+day),value:balance});
  const values=points.map(p=>p.value),lo=Math.min(0,...values),hi=Math.max(1,...values),pad=Math.max((hi-lo)*.12,1),min=lo-pad,max=hi+pad,range=max-min;
- const x=t=>14+570*Math.max(0,Math.min(1,(t-startTime)/Math.max(day,endTime-startTime)));
- const y=v=>207-175*(v-min)/range;
- const pts=points.map(p=>({...p,x:x(p.time),y:y(p.value)}));
+ // A date-only axis overlaps transactions entered on the same day.
+ // For sparse histories, space each event visibly while retaining chronological order.
+ // With larger histories, blend calendar position and event order.
+ const eventCount=visible.length;
+ const calendarX=t=>Math.max(0,Math.min(1,(t-startTime)/Math.max(day,endTime-startTime)));
+ const pts=points.map((p,i)=>{
+  const eventX=i/Math.max(1,points.length-1);
+  const progress=eventCount<=8?eventX:calendarX(p.time)*.45+eventX*.55;
+  return {...p,x:14+570*progress,y:207-175*(p.value-min)/range};
+ });
  const line="M"+pts.map(p=>p.x.toFixed(2)+" "+p.y.toFixed(2)).join(" L");
  const area=line+" L"+pts[pts.length-1].x.toFixed(2)+" 220 L"+pts[0].x.toFixed(2)+" 220 Z";
  const svg=$("balance-chart");
@@ -30,7 +37,9 @@ function renderChart(){
  svg.innerHTML='<defs><linearGradient id="chartfill" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#dfb877" stop-opacity=".42"/><stop offset="1" stop-color="#dfb877" stop-opacity="0"/></linearGradient><filter id="chartglow" x="-25%" y="-80%" width="150%" height="260%"><feGaussianBlur stdDeviation="5"/></filter></defs>'+grid+'<path d="'+area+'" fill="url(#chartfill)"/><path d="'+line+'" fill="none" stroke="'+gold+'" stroke-width="9" opacity=".23" filter="url(#chartglow)" stroke-linecap="round" stroke-linejoin="round"/><path d="'+line+'" fill="none" stroke="'+gold+'" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>'+dots+'<circle cx="'+end.x.toFixed(2)+'" cy="'+end.y.toFixed(2)+'" r="10" fill="'+gold+'" opacity=".15"/><circle cx="'+end.x.toFixed(2)+'" cy="'+end.y.toFixed(2)+'" r="5.5" fill="'+gold+'" stroke="#fff" stroke-width="1.5"/>';
  const labels=chartPeriod==="1M"?5:6;
  const labelFormat=new Intl.DateTimeFormat("pt-BR",{day:"2-digit",month:"short"});
- $("chart-months").innerHTML=Array.from({length:labels},(_,i)=>{const d=new Date(startTime+(endTime-startTime)*i/(labels-1));return "<span>"+(chartPeriod==="1M"?labelFormat.format(d).replace(".",""):new Intl.DateTimeFormat("pt-BR",{month:"short",year:chartPeriod==="ALL"||chartPeriod==="1A"?"2-digit":undefined}).format(d).replace(".",""))+"</span>"}).join("");
+ $("chart-months").innerHTML=eventCount>0&&eventCount<=4
+  ?points.map((p,i)=>"<span>"+(i===0?"Início":i===points.length-1?"Hoje":labelFormat.format(new Date(p.time)).replace(".",""))+"</span>").join("")
+  :Array.from({length:labels},(_,i)=>{const d=new Date(startTime+(endTime-startTime)*i/(labels-1));return "<span>"+(chartPeriod==="1M"?labelFormat.format(d).replace(".",""):new Intl.DateTimeFormat("pt-BR",{month:"short",year:chartPeriod==="ALL"||chartPeriod==="1A"?"2-digit":undefined}).format(d).replace(".",""))+"</span>"}).join("");
  const axis=document.querySelector(".performance .chart-grid");if(axis)axis.innerHTML=[4,3,2,1,0].map(i=>"<span>"+money(min+range*i/4).replace(",00","")+"</span>").join("");
  const small=$("wealth-chart");if(small)small.innerHTML='<path d="M'+pts.map(p=>(p.x/600*360).toFixed(2)+" "+(p.y/230*135).toFixed(2)).join(" L")+'" fill="none" stroke="#e9cb9e" stroke-width="2.5" stroke-linecap="round"/>';
  const current=points[points.length-1].value,first=points[0].value,diff=current-first;
