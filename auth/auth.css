@@ -93,3 +93,74 @@ body.login-reference.login-dark .login-icon{background:rgba(28,39,60,.93)}
   body.login-reference .login-input input{font-size:16px!important;min-width:0}
   body.login-reference .login-options{flex-wrap:wrap}
 }
+
+/* Login editorial — foto original, cores quentes e marca MeuSaldo discreta */
+body.login-reference{
+ display:block!important;position:relative;min-height:100svh;
+ background:linear-gradient(180deg,rgba(8,9,10,.12) 0%,rgba(10,10,11,.02) 47%,rgba(12,12,14,.28) 100%),url('/login/login-background.webp') center top/cover no-repeat!important;
+ color:#f8f5ee!important;
+}
+body.login-reference.login-dark{
+ background:linear-gradient(180deg,rgba(8,8,10,.36),rgba(10,10,12,.12) 47%,rgba(7,7,9,.48)),url('/login/login-background.webp') center top/cover no-repeat!important;
+}
+body.login-reference::before{display:none!important}
+body.login-reference .login-brand{
+ position:absolute;left:clamp(16px,5vw,60px);top:calc(env(safe-area-inset-top) + 26px);z-index:3;
+ display:block;width:clamp(125px,34vw,195px);max-width:48%;text-decoration:none;
+ filter:drop-shadow(0 2px 8px rgba(0,0,0,.55));
+}
+body.login-reference .login-brand img{width:100%;height:auto;display:block}
+body.login-reference .login-wrap{
+ width:min(480px,calc(100% - 30px));max-width:100%;min-height:100svh;
+ display:flex;flex-direction:column;justify-content:flex-end;
+ margin:0 auto;box-sizing:border-box;padding:150px 0 max(20px,env(safe-area-inset-bottom));
+}
+body.login-reference .login-form{
+ display:flex;flex-direction:column;gap:13px;
+ padding:28px 24px 19px;border-radius:33px;
+ background:linear-gradient(135deg,rgba(52,49,48,.76),rgba(28,29,31,.83))!important;
+ border:1px solid rgba(255,255,255,.28);box-shadow:0 18px 50px rgba(0,0,0,.28);
+ backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+}
+body.login-reference .login-input{height:58px;border:1px solid rgba(255,255,255,.37);
+ border-radius:16px;background:rgba(255,255,255,.07)!important;
+ box-shadow:none!important;padding:0 14px;color:#fff}
+body.login-reference .login-input>svg,
+body.login-reference .login-input .password-toggle{color:#f8f8f8!important}
+body.login-reference .login-input input{color:#fff!important;-webkit-text-fill-color:#fff;font-size:16px!important}
+body.login-reference .login-input input::placeholder{color:#f4f1ed!important;opacity:1}
+body.login-reference .login-input:focus-within{outline:2px solid #f4c766}
+body.login-reference .login-options{order:4;gap:8px;margin-top:4px}
+body.login-reference .login-options a{font-size:12px;color:#f4ebe0!important}
+body.login-reference .login-submit{
+ height:59px;margin:6px 0 0;border-radius:16px;
+ background:linear-gradient(115deg,#ffe666,#ffca38)!important;
+ border:1px solid #f7da67;color:#191919!important;font-size:18px;
+ box-shadow:0 7px 20px rgba(0,0,0,.18);text-shadow:none;
+}
+body.login-reference .login-arrow{background:rgba(0,0,0,.08)}
+body.login-reference .login-register{
+ display:flex;flex-direction:column;margin:0;padding:0 24px 20px;
+ color:#fff;text-shadow:0 1px 4px #000b;font-size:12px;
+}
+body.login-reference .login-register a{
+ display:block;margin-top:9px;padding:16px 12px;border-radius:16px;
+ background:linear-gradient(115deg,rgba(76,85,97,.93),rgba(48,56,70,.93));
+ color:#edf2ff!important;font-size:16px;font-weight:700;text-decoration:none!important;
+ text-shadow:none;box-shadow:0 3px 16px #0002;
+}
+body.login-reference #message{margin:0!important;font-size:12px;color:#fff!important}
+body.login-reference .login-theme-toggle{right:16px;top:calc(env(safe-area-inset-top) + 17px);width:40px;height:40px;border-radius:14px;padding:10px}
+@media(min-width:781px){
+ body.login-reference .login-wrap{padding-bottom:45px}
+ body.login-reference .login-brand{top:30px}
+}
+@media(max-width:780px){
+ body.login-reference,body.login-reference.login-dark{background-attachment:scroll!important;background-position:center top!important}
+ body.login-reference .login-wrap{min-height:100svh;width:min(480px,calc(100% - 30px));padding:120px 0 max(15px,env(safe-area-inset-bottom))}
+ body.login-reference .login-form{padding:21px 17px 15px;gap:11px}
+ body.login-reference .login-input{height:54px}
+ body.login-reference .login-submit{height:57px}
+ body.login-reference .login-register{padding:0 17px 15px}
+}
+@media(max-height:690px){body.login-reference .login-wrap{padding-top:94px}body.login-reference .login-form{padding-top:15px;padding-bottom:12px;gap:8px}}
