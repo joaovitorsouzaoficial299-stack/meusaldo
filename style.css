@@ -197,3 +197,19 @@ body.dashboard-light .chart-periods button.active{background:#e0c7a5;color:#3327
   line-height:1.15!important;
  }
 }
+
+/* iPhone: visually large amount with a 16px native font to avoid Safari auto-zoom. */
+@supports (-webkit-touch-callout:none){
+ @media(max-width:850px){
+  .transaction-form .transaction-amount-input,#transaction-amount{
+   font-size:16px!important;
+   width:40%!important;
+   max-width:none!important;
+   margin:27px auto 34px!important;
+   transform:scale(2.5);
+   transform-origin:center center;
+   display:block!important;
+   text-align:center!important;
+  }
+ }
+}
