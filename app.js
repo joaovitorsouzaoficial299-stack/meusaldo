@@ -31,7 +31,7 @@ async function loadFinancialNews(force=false){
    const title=document.createElement("h2");title.textContent=article.title;
    const description=document.createElement("p");description.textContent=String(article.description||"Leia a notícia completa na fonte original.").slice(0,200);
    const more=document.createElement("span");more.className="news-more";more.textContent="Ler notícia ↗";
-   card.append(top,title,description,more);list.append(card);
+   const content=document.createElement("div");content.className="news-card-content";content.append(top,title,description,more);card.append(content);list.append(card);
   });
   if(!list.childElementCount)throw new Error("Nenhuma notícia válida");
   newsLastFetched=Date.now();status.textContent="Últimas manchetes · Atualização automática a cada 15 minutos";
