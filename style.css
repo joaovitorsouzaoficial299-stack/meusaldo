@@ -222,3 +222,28 @@ body.dashboard-light .chart-periods button.active{background:#e0c7a5;color:#3327
  display:none!important;
 }
 #inicio .performance-value{justify-content:flex-start!important}
+
+/* Notícias financeiras em tempo quase real — cards nativos do MeuSaldo */
+.news-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.news-heading h1{margin-bottom:8px}
+.news-heading .intro{max-width:560px}
+.news-refresh{flex:0 0 auto;padding:12px 15px;border:1px solid rgba(207,173,120,.35);border-radius:14px;background:rgba(199,160,102,.13);color:inherit;font:700 12px Manrope,Arial,sans-serif;cursor:pointer}
+.news-refresh:disabled{opacity:.55;cursor:wait}
+.news-status{font-size:12px;color:#a6a09a;margin:18px 0}
+.news-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:15px 0 22px}
+.news-card{min-width:0;display:flex;flex-direction:column;gap:12px;padding:22px;border:1px solid rgba(209,179,135,.2);border-radius:23px;background:linear-gradient(145deg,rgba(202,168,120,.09),rgba(255,255,255,.025));text-decoration:none;color:inherit;transition:transform .2s,border-color .2s}
+.news-card:hover{transform:translateY(-3px);border-color:rgba(222,183,121,.6)}
+.news-card:focus-visible{outline:2px solid #dcb778;outline-offset:3px}
+.news-card-top{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.news-source{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#d9b782}
+.news-date{font-size:11px;color:#aaa5a0}
+.news-card h2{font-size:clamp(17px,2vw,21px);line-height:1.32;letter-spacing:-.02em;margin:0}
+.news-card p{font-size:13px;line-height:1.6;opacity:.75;margin:0;flex:1}
+.news-more{font-size:12px;font-weight:800;color:#d9b782}
+.news-disclaimer{font-size:11px;opacity:.65}
+.news-empty{grid-column:1/-1;padding:28px;border:1px dashed #a99579;border-radius:18px;font-size:13px}
+body.dashboard-light .news-status,body.dashboard-light .news-date{color:#776d62}
+body.dashboard-light .news-card{background:#fff;border-color:#e2d5c5;color:#28231d}
+body.dashboard-light .news-source,body.dashboard-light .news-more{color:#986d38}
+body.dashboard-light .news-refresh{background:#e9d6bb;border-color:#d3b58e;color:#33281d}
+@media(max-width:650px){.news-cards{grid-template-columns:1fr;gap:12px}.news-card{padding:18px;border-radius:19px}.news-heading{align-items:flex-start}.news-refresh{padding:10px;font-size:11px}.news-heading h1{font-size:clamp(26px,7vw,36px)}}
